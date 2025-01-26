@@ -90,7 +90,6 @@ const page = ({ params }) => {
             id="standard-multiline-static"
             label="When are you available"
             multiline
-            style={{ width: "40%" }}
             onChange={(e) => setText(e.target.value)}
           />
           <LoadingButton

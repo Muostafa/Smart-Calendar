@@ -27,7 +27,9 @@
   height: 100%;
   padding-top: auto;
 }
-
+.text2 {
+  width: 40%;
+}
 .text {
   width: 65%;
   height: 100%;
@@ -70,6 +72,9 @@
   margin-top: 10px;
 }
 @media screen and (max-width: 800px) {
+  .text2 {
+    width: 90%;
+  }
   .text {
     display: none;
     visibility: hidden;
