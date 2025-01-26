@@ -70,6 +70,7 @@ export async function convertTextToAvailability(text) {
   10. End of day is 23:59. If from or to is equal to 24:00, make it equal 23:59.
   11. dayOfWeek must be one of: monday, tuesday, wednesday, thursday, friday, saturday, sunday.
   12. The current time is ${currentTime}, and today is ${currentDay}. 
+  13. Response must be in the format: { "availability": [ { "dayOfWeek": "string", "timeSlots": [ { "from": "string", "to": "string" } ] } ] }.
 
   Additional Instructions:
   - If the statement contains relative time references like "today" or "tomorrow," calculate the correct day based on the current date and time.
