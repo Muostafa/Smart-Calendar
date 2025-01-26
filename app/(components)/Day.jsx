@@ -43,7 +43,7 @@ const formatTimeTo12Hour = (time) => {
 const Day = ({ day, timeSlots = [] }) => {
   return (
     <Box sx={{ width: "100%", maxWidth: "500px", margin: "0 auto" }}>
-      <StyledAccordion defaultExpanded>
+      <StyledAccordion>
         <AccordionSummary
           expandIcon={<ArrowDropDownIcon />}
           aria-controls="panel-content"

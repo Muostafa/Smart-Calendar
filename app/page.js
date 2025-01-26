@@ -43,41 +43,39 @@ export default function Page() {
     <div className={styles.holder}>
       <div className={styles.text}>
         <Description
-          title={
-            "Welcome to Calendar Co-Pilot: Your Personal Scheduling Assistant"
-          }
+          title={"Welcome to Calendar Co-Pilot: Assignment Overview"}
           text={
-            "Tired of manual calendar setup? Calendar Co-Pilot simplifies scheduling for tutors, consultants, and professionals."
+            "This assignment involves building a system to help tutors set up their availability using natural language. The goal is to simplify the process of creating a weekly schedule by leveraging AI and MongoDB."
           }
         />
         <Description
-          title={"Experience the Difference with Calendar Co-Pilot:"}
+          title={"Objective"}
           text={
-            "Join the growing community of professionals who are revolutionizing their scheduling experience with Calendar Co-Pilot. Say hello to efficiency, productivity, and peace of mind. Try it today and take control of your schedule like never before."
+            "The platform connects tutors with students by allowing tutors to describe their availability in natural language. The system will generate a proposed calendar, confirm it with the tutor, and save it to a MongoDB database."
           }
         />
         <Description
-          title={"Effortless Scheduling, Powered by AI:"}
+          title={"Key Features"}
           text={
-            "Just describe your availability, and our AI generates a precise calendar for you."
+            "1. Natural Language Input: Tutors describe their availability in plain English. \n2. AI-Powered Parsing: The system uses AI to extract and structure time slots. \n3. Calendar Proposal: Tutors review and confirm the generated schedule. \n4. MongoDB Integration: Confirmed schedules are securely stored in a noSQL database."
           }
         />
         <Description
-          title={"Seamless Integration with MongoDB:"}
+          title={"Example Input"}
           text={
-            "Securely store and access your schedule anytime with MongoDB integration."
+            "A tutor can enter: 'I am available between noon and 4pm on weekends, after 7 pm to midnight on Monday and Wednesday, and after 9pm otherwise.' The system will generate a structured calendar for confirmation."
           }
         />
         <Description
-          title={"Intuitive Web Interface:"}
+          title={"Technologies Used"}
           text={
-            "View your schedule at a glance with our intuitive calendar display."
+            "1. Frontend: React.js with Material-UI for the user interface. \n2. Backend: Node.js and Express.js for API handling. \n3. AI: Gemini for natural language processing. \n4. Database: MongoDB for storing tutor profiles and availability."
           }
         />
         <Description
-          title={"Visualize Your Schedule with Ease:"}
+          title={"Next Steps"}
           text={
-            "Join professionals revolutionizing scheduling. Try Calendar Co-Pilot today!"
+            "Enter your name to get started. You'll be redirected to a page where you can describe your availability and view your proposed schedule."
           }
         />
       </div>
