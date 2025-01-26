@@ -9,23 +9,33 @@ import Description from "./(components)/Description";
 export default function Page() {
   const router = useRouter();
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const res = await fetch(`/api/Tutor`, {
-      method: "POST",
-      body: JSON.stringify({
-        name: name,
-      }),
-      "content-type": "application/json",
-    });
-
-    if (!res.ok) {
-      throw new Error("Failed to create Tutor");
+    if (!name.trim()) {
+      setError("Please enter a valid name.");
+      return;
     }
 
-    if (res.ok) {
+    setLoading(true);
+    try {
+      const res = await fetch(`/api/Tutor`, {
+        method: "POST",
+        body: JSON.stringify({ name }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to create Tutor");
+      }
+
       router.push(`/tutor/${name}`);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -52,21 +62,18 @@ export default function Page() {
             "Just describe your availability, and our AI generates a precise calendar for you."
           }
         />
-
         <Description
           title={"Seamless Integration with MongoDB:"}
           text={
             "Securely store and access your schedule anytime with MongoDB integration."
           }
         />
-
         <Description
           title={"Intuitive Web Interface:"}
           text={
             "View your schedule at a glance with our intuitive calendar display."
           }
         />
-
         <Description
           title={"Visualize Your Schedule with Ease:"}
           text={
@@ -82,6 +89,7 @@ export default function Page() {
             label="Name"
             variant="outlined"
             size="medium"
+            aria-label="Enter your name"
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -89,12 +97,13 @@ export default function Page() {
           <Button
             variant="contained"
             size="medium"
-            disabled={name === ""}
+            disabled={name === "" || loading}
             onClick={handleSubmit}
           >
-            Continue
+            {loading ? "Loading..." : "Continue"}
           </Button>
         </div>
+        {error && <p className={styles.error}>{error}</p>}
       </div>
     </div>
   );
