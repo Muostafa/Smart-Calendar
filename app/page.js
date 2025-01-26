@@ -12,7 +12,7 @@ export default function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch(`http://localhost:3000/api/Tutor`, {
+    const res = await fetch(`/api/Tutor`, {
       method: "POST",
       body: JSON.stringify({
         name: name,
@@ -73,8 +73,6 @@ export default function Page() {
             "Join professionals revolutionizing scheduling. Try Calendar Co-Pilot today!"
           }
         />
-
-        
       </div>
       <div className={styles.main}>
         <h1 className={styles.test}>Calendar co-pilot</h1>
