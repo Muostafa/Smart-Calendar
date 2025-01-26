@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import Day from "./Day";
 import styles from "../../styles/calendar.module.css";
 
-
 const Calendar = (props) => {
   const [days, setDays] = useState([]);
   var result = Object.entries(props);
 
   useEffect(() => {
     setDays(
-        result.map((e) => (
+      result.map((e) => (
         <Day
           key={e[1].dayOfWeek}
-          day={e[1].dayOfWeek}
+          day={e[1].dayOfWeek.charAt(0).toUpperCase() + e[1].dayOfWeek.slice(1)}
           timeSlots={e[1].timeSlots}
         />
       ))

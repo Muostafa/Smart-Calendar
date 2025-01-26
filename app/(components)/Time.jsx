@@ -1,9 +1,7 @@
-import React from "react";
-
-const Time = ({from, to}) => {
+const Time = ({ from, to }) => {
   return (
     <>
-      * From {from} to {to}
+      <span>{from}</span> - <span>{to}</span>
     </>
   );
 };
