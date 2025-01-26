@@ -1,5 +1,5 @@
 export async function fetchTutorAvailability(name) {
-  const response = await fetch(`http://localhost:3000/api/Tutor/${name}`);
+  const response = await fetch(`/api/Tutor/${name}`);
   if (!response.ok) {
     throw new Error("Failed to fetch tutor availability");
   }
@@ -7,7 +7,7 @@ export async function fetchTutorAvailability(name) {
 }
 
 export async function updateTutorAvailability(name, availability) {
-  const response = await fetch(`http://localhost:3000/api/Tutor/${name}`, {
+  const response = await fetch(`/api/Tutor/${name}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -42,15 +42,15 @@ export async function convertTextToAvailability(text) {
     .toLocaleDateString("en-US", { weekday: "long" })
     .toLowerCase();
 
-  const inputPrompt = `The current time is ${currentTime}, and today is ${currentDay}. I will give you an English statement to convert to a JSON object in this format: 
+  const inputPrompt = `I will give you an English statement to convert to a JSON object in this format: 
   {
     "availability": [
       {
-        "dayOfWeek": "string", // Must be one of: monday, tuesday, wednesday, thursday, friday, saturday, sunday
+        "dayOfWeek": "string",
         "timeSlots": [
           {
-            "from": "string", // Start time in 24-hour format (e.g., "14:00")
-            "to": "string"    // End time in 24-hour format (e.g., "16:00")
+            "from": "string",
+            "to": "string" 
           }
         ]
       }
@@ -67,7 +67,9 @@ export async function convertTextToAvailability(text) {
   7. If the input statement does not contain relevant information, return 1 random time slot on a random day.
   8. The output must be a valid JSON object, starting with '{' and ending with '}'.
   9. Never add comments to the output JSON object as It will be parsed by a program.
-  10. End of day is 23:59.
+  10. End of day is 23:59. If from or to is equal to 24:00, make it equal 23:59.
+  11. dayOfWeek must be one of: monday, tuesday, wednesday, thursday, friday, saturday, sunday.
+  12. The current time is ${currentTime}, and today is ${currentDay}. 
 
   Additional Instructions:
   - If the statement contains relative time references like "today" or "tomorrow," calculate the correct day based on the current date and time.
